@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Spinner } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import DisplayMealDetail from '../DisplayMealDetail/DisplayMealDetail';
 
@@ -18,7 +19,12 @@ const MealDetai = () => {
     return (
         <div>
             {
-                mealDetail.map(meal => <DisplayMealDetail meal={meal} key={meal.idMeal}></DisplayMealDetail>)
+                mealDetail.length === 0 ?
+                    <Spinner animation="border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                    :
+                    mealDetail.map(meal => <DisplayMealDetail meal={meal} key={meal.idMeal}></DisplayMealDetail>)
             }
         </div>
     );

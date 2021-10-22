@@ -26,6 +26,10 @@ const Restaurant = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => {
+                if (data.meals === null) {
+                    alert('meal not found')
+                    return
+                }
                 setMeals(data.meals)
             })
             .catch(err => console.log(err))
@@ -51,6 +55,16 @@ const Restaurant = () => {
 
                 <main>
                     <section>
+
+
+                        {/* <Row xs={1} md={4} className="g-4">
+
+                            {
+                                meals.map(meal => <Meal meal={meal} key={meal.idMeal}></Meal>)
+                            }
+
+                        </Row> */}
+
 
                         {
                             meals.length === 0 ?
